@@ -1,1 +1,2 @@
-rootProject.name = 'Patiwat13'
+rootProject.name = "PROJECT"
+include("a", "b", "c")
