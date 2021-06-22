@@ -29,6 +29,18 @@ dependencies {
 	}
 }
 
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
 test {
 	useJUnitPlatform()
 }
