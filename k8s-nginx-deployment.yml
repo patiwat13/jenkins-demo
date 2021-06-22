@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-tesing
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-tesing
+  template:
+    metadata:
+      labels:
+        app: nginx-tesing
+    spec:
+      containers:
+        - name: nginx
+          image: liquid07/website-php:website-php-demo
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-tesing
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: nginx-tesing
