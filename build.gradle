@@ -8,6 +8,11 @@ group = 'com.jhooq'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+bootJar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
