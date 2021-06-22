@@ -1,39 +1,26 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.7.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id 'java'
+    \`java-library\`
+    application
+    id("io.spring.dependency-management") version "1.0.9.RELEASE"
+    id("org.springframework.boot") version "2.1.12.RELEASE"
 }
-
-group = 'com.jhooq'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-bootJar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
+allprojects {
+    apply(plugin = "application")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "org.springframework.boot")
+    application {
+        mainClassName = "example.Application"
+    }
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    springBoot {
+        buildInfo()
+    }
 }
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	compile.exclude module: "spring-boot-starter-tomcat"
-}
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-jetty'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-}
-
-test {
-	useJUnitPlatform()
+subprojects {
+    dependencies {
+        implementation(project(":"))
+    }
 }
