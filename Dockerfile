@@ -1,4 +1,3 @@
-FROM openjdk:11
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM nginx:1.13.3
+
+MAINTAINER Daniel Nogueira <danielnogueira.dev@gmail.com>
