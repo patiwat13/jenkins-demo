@@ -15,6 +15,11 @@ configurations {
 	compile.exclude module: "spring-boot-starter-tomcat"
 }
 
+bootJar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
 repositories {
 	mavenCentral()
 }
